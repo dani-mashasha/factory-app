@@ -1,14 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { DepartmentsProvider } from "./contexts/DepartmentsContext.js";
+import { EmployeesProvider } from "./contexts/EmployeesContext.js";
+import { ShiftsProvider } from "./contexts/ShiftsContext.js";
+import { UsersProvider } from "./contexts/UsersContext.js";
+import { AuthProvider } from "./contexts/AuthContext.js";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <AuthProvider>
+        <DepartmentsProvider>
+            <EmployeesProvider>
+                <ShiftsProvider>
+                    <UsersProvider>
+                        <App />
+                    </UsersProvider>
+                </ShiftsProvider>
+            </EmployeesProvider>
+        </DepartmentsProvider>
+    </AuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
